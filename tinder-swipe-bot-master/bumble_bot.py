@@ -8,12 +8,17 @@ class TinderBot():
         self.driver = webdriver.Chrome()
 
     def login(self):
-        self.driver.get('https://tinder.com')
+        self.driver.get('https://bumble.com/')
 
         sleep(5)
 
 
-        fb_btn = self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/span/div[2]/button')
+        sign_in_btn = self.driver.find_element_by_xpath('//*[@id="page"]/div/div/div[1]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/a')
+        sign_in_btn.click()
+
+        sleep(2)
+
+        fb_btn = self.driver.find_element_by_xpath('//*[@id="main"]/div/div[1]/div[2]/main/div/div[2]/form/div[1]/div')
 
         sleep(2)
         fb_btn.click()
@@ -37,23 +42,21 @@ class TinderBot():
 
         sleep(5)
 
-        cookies_consent = self.driver.find_element_by_xpath('//*[@id="content"]/div/div[3]/div/button')
-        cookies_consent.click()
+        # cookies_consent = self.driver.find_element_by_xpath('//*[@id="content"]/div/div[3]/div/button')
+        # cookies_consent.click()
 
-        popup_1 = self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/button[1]')
-        popup_1.click()
+        # popup_1 = self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/button[1]')
+        # popup_1.click()
 
-        popup_2 = self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/button[1]')
-        popup_2.click()
+        # popup_2 = self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/button[1]')
+        # popup_2.click()
 
-        sleep(5)
-
-        passport_consent = self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div[2]/button')
-        passport_consent.click()
+        # passport_consent = self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div[2]/button')
+        # passport_consent.click()
         
 
     def like(self):
-        like_btn = self.driver.find_element_by_xpath('//*[@id="content"]/div/div[1]/div/main/div[1]/div/div/div[1]/div/div[2]/div[4]/button')
+        like_btn = self.driver.find_element_by_xpath('//*[@id="main"]/div/div[1]/main/div[2]/div/div/span/div[2]/div/div[2]/div/div[3]/div')
         like_btn.click()
 
     def dislike(self):
@@ -82,5 +85,4 @@ class TinderBot():
 bot = TinderBot()
 bot.login()
 
-sleep(10)
 bot.auto_swipe()
